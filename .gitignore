@@ -1,0 +1,8 @@
+venv/
+*.pyc
+*.swp
+*.swo
+*.db
+*.sqlite
+*.sqlite3
+secrets.py
