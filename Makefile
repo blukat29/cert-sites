@@ -4,7 +4,7 @@ setup: venv secrets db
 
 venv:
 	virtualenv venv
-	venv/bin/pip install -r pip-freeze.txt
+	venv/bin/pip install -r requirements.txt
 
 secrets: venv
 	printf "SECRET_KEY = '" > cert/cert/secrets.py
