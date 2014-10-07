@@ -90,6 +90,6 @@ except ImportError:
     pass
 
 try:
-    from secret import *
+    from secrets import *
 except ImportError:
     pass
