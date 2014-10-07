@@ -10,20 +10,21 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-import secrets
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"), )
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: Fill this value to some random string.
-SECRET_KEY = secrets.SECRET_KEY
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'f@z1$g@wkv$=s$iv&uj$(-mxb6nvjvn@u516(3z3k4+ko9c+#9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -60,7 +61,7 @@ WSGI_APPLICATION = 'cert.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '../db/db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -83,8 +84,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Template directory
-TEMPLATE_DIRS = (
-    os.path.abspath(os.path.join(BASE_DIR, "../templates/")),
-)
+try:
+    from local_settings import *
+except ImportError:
+    pass
 
+try:
+    from secret import *
+except ImportError:
+    pass
