@@ -1,20 +1,20 @@
 port=12345
 
-setup: venv secrets db
+setup: env secrets db
 
-venv:
-	virtualenv venv
-	venv/bin/pip install -r requirements.txt
+env:
+	virtualenv env
+	env/bin/pip install -r requirements.txt
 
-secrets: venv
+secrets: env
 	printf "SECRET_KEY = '" > cert/cert/secrets.py
 	cat /dev/urandom |tr -dc "[:alnum:]" | head -c40 >> cert/cert/secrets.py
 	printf "'\n" >> cert/cert/secrets.py
 
-db: secrets venv
+db: secrets env
 	mkdir -p cert/db
-	venv/bin/python cert/manage.py syncdb
+	env/bin/python cert/manage.py syncdb
 
 run:
-	venv/bin/python cert/manage.py runserver 0.0.0.0:$(port)
+	env/bin/python cert/manage.py runserver 0.0.0.0:$(port)
 

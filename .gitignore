@@ -7,7 +7,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-venv/
 env/
 build/
 develop-eggs/
@@ -49,7 +48,7 @@ coverage.xml
 *.log
 *.sqlite3
 local_settings.py
-secret.py
+secrets.py
 
 # Sphinx documentation
 docs/_build/

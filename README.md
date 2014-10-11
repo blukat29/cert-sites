@@ -7,24 +7,25 @@ Built on django 1.7.
 Requirements
 ------------
 
+- python 2.x
 - pip
 - virtualenv
-- GNU make
 
 Setup
 -----
 
 ```sh
-virtualenv venv
-source venv/bin/activate
-pip install -r pip-freeze.txt
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
 cd cert
 ./manage.py syncdb
 ```
 
-OR just
+To apply local setting:
 ```sh
-make setup
+cd cert/cert/
+cp local_settings.py.default local_settings.py
 ```
 
 Run
@@ -33,9 +34,5 @@ Run
 ```sh
 cd cert
 ./manage.py runserver 0.0.0.0:12345
-```
-OR
-```sh
-make run port=12345
 ```
 
