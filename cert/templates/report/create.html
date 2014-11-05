@@ -2,6 +2,9 @@ Hi {{ username }}
 
 <form action="" method="post">
   {% csrf_token %}
+  <p>Reporter: {{ real_name }}</p>
+  <p>Phone: {{ phone }}</p>
+  <p>Email: {{ email }}</p>
   {{ form.as_p }}
   <input type="submit" value="Submit" />
 </form>
