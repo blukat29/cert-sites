@@ -21,3 +21,8 @@ class ReportCreateView(CreateView):
         report.save()
         return redirect("/report/")
 
+    def get_context_data(self, **kwargs):
+        context = super(ReportCreateView, self).get_context_data(**kwargs)
+        context["username"] = self.request.user.username
+        return context
+
