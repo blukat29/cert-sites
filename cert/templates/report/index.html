@@ -1,9 +1,32 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<style>
+.report_list {
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+.report_list th,
+.report_list td {
+  min-width: 200px;
+  border: 1px solid black;
+  padding: 0 0 10 10;
+}
+</style>
 </head>
 <body>
   Only logged in user can see this.
   <a href="/accounts/logout/">Logout</a>
+  <a href="/report/create">Write</a>
+
+  <table class="report_list">
+  <tr><th>URL</th><th>Date</th></tr>
+  {% for report in reports %}
+  <tr>
+    <td>{{ report.url }}&nbsp;<a href="/report/read/{{ report.id }}/">Read</a></td>
+    <td>{{ report.date }}</td>
+  </tr>
+  {% endfor %}
+  </table>
 </body>
 </html>
