@@ -1,0 +1,13 @@
+Hi {{ user.username }}
+
+{% if report %}
+  <p>Report id: {{ report.id }}</p>
+  <p>Reporter: {{ report.user.first_name }}</p>
+  <p>Reporter phone: {{ report.user.last_name }}</p>
+  <p>Reporter email: {{ report.user.email }}</p>
+  <p>URL: {{ report.url }}</p>
+  <p>Date: {{ report.date }}</p>
+  <p>{{ report.text }}</p>
+{% else %}
+  <p>No such report.</p>
+{% endif %}

@@ -11,6 +11,15 @@ def index(request):
     reports = Report.objects.all()
     return render(request, "report/index.html", {"reports":reports})
 
+@login_required
+def read(request, report_id):
+    try:
+        report = Report.objects.get(id=report_id)
+    except Report.DoesNotExist:
+        report = None
+    user = request.user
+    return render(request, "report/read.html", {"report":report, "user":user})
+
 class ReportCreateView(CreateView):
     model = Report
     form_class = ReportForm
