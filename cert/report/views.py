@@ -33,10 +33,7 @@ class ReportCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(ReportCreateView, self).get_context_data(**kwargs)
-        user = self.request.user
-        context["username"] = user.username
-        context["real_name"] = user.first_name
-        context["phone"] = user.last_name
-        context["email"] = user.email
+        context["user"] = self.request.user
+        context["reporter"] = self.request.user
         return context
 
