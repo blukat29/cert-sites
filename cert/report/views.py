@@ -8,7 +8,8 @@ from report.forms import ReportForm
 
 @login_required
 def index(request):
-    return render(request, "report/index.html")
+    reports = Report.objects.all()
+    return render(request, "report/index.html", {"reports":reports})
 
 class ReportCreateView(CreateView):
     model = Report
