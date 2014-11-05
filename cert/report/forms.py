@@ -12,4 +12,4 @@ class ReportForm(ModelForm):
     date = forms.DateField(initial=datetime.now)
     class Meta:
         model = Report
-        fields = ["url", "text", "date"]
+        fields = ["url", "text", "date", "tags"]

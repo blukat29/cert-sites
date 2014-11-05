@@ -15,6 +15,7 @@ def index(request):
 def read(request, report_id):
     try:
         report = Report.objects.get(id=report_id)
+        report.tags_names = report.tags.names()
     except Report.DoesNotExist:
         report = None
     user = request.user
@@ -29,6 +30,7 @@ class ReportCreateView(CreateView):
         report = form.save(commit=False)
         report.user = User.objects.get(username=self.request.user.username)
         report.save()
+        form.save_m2m()
         return redirect("/report/")
 
     def get_context_data(self, **kwargs):

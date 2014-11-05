@@ -8,6 +8,11 @@ Hi {{ user.username }}
   <p>URL: {{ report.url }}</p>
   <p>Date: {{ report.date }}</p>
   <p>{{ report.text }}</p>
+  <p>Tags:
+  {% for tag in report.tags_names %}
+  <span>{{ tag }}</span>
+  {% endfor %}
+  </p>
 {% else %}
   <p>No such report.</p>
 {% endif %}
