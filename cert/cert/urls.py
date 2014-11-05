@@ -1,6 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
+
+from forms import RegistrationForm
 
 urlpatterns = patterns('',
     # Examples:
@@ -11,4 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^report/', include('report.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^register/', CreateView.as_view(template_name="register.html",
+                                          form_class=RegistrationForm,
+                                          success_url="/")),
 )
