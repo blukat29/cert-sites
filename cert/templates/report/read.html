@@ -11,3 +11,8 @@ Hi {{ user.username }}
 {% else %}
   <p>No such report.</p>
 {% endif %}
+
+{% if report %}
+  <p><a href="/report/edit/{{ report.id }}/">edit</a></p>
+{% endif %}
+

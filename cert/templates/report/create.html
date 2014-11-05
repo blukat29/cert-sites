@@ -1,10 +1,14 @@
 Hi {{ user.username }}
 
-<form action="" method="post">
-  {% csrf_token %}
-  <p>Reporter: {{ reporter.first_name }}</p>
-  <p>Phone: {{ reporter.last_name }}</p>
-  <p>Email: {{ reporter.email }}</p>
-  {{ form.as_p }}
-  <input type="submit" value="Submit" />
-</form>
+{% if valid_report %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <p>Reporter: {{ reporter.first_name }}</p>
+    <p>Phone: {{ reporter.last_name }}</p>
+    <p>Email: {{ reporter.email }}</p>
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+  </form>
+{% else %}
+  <p>No such report!</p>
+{% endif %}
