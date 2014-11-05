@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 class Report(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     url = models.CharField(max_length=300)
     text = models.CharField(max_length=10000)
     date = models.DateField()
