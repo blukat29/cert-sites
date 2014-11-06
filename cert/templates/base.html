@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>{% block title %}KAIST CERT{% endblock %}</title>
+
+  <style>
+  #header { background-color: #ddd; }
+  #content {
+    border: solid 1px black;
+    padding: 10px 10px 10px 10px;
+  }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h3>This is global header</h3>
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}
+      <a href="{% url 'django.contrib.auth.views.logout' %}?next=/">Logout</a>
+    {% else %}
+      <a href="{% url 'django.contrib.auth.views.login' %}?next={{ request.path }}">Login</a>
+      <a href="/register/">Register</a>
+    {% endif %}
+  </div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

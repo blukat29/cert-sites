@@ -52,6 +52,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # Allow to access request object in templates
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+)
+
 ROOT_URLCONF = 'cert.urls'
 
 WSGI_APPLICATION = 'cert.wsgi.application'

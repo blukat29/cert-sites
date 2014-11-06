@@ -1,12 +1,9 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-</head>
-<body>
-  <form action="/register/" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit"/>
-  </form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/register/" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit"/>
+</form>
+{% endblock %}

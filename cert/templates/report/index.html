@@ -1,23 +1,21 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<style>
-.report_list {
-  margin-top: 10px;
-  border-collapse: collapse;
-}
-.report_list th,
-.report_list td {
-  min-width: 200px;
-  border: 1px solid black;
-  padding: 0 0 10 10;
-}
-</style>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
+  <style>
+  .report_list {
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  .report_list th,
+  .report_list td {
+    min-width: 200px;
+    border: 1px solid black;
+    padding: 0 0 10 10;
+  }
+  </style>
   Only logged in user can see this.
-  <a href="/accounts/logout/">Logout</a>
-  <a href="/report/create">Write</a>
+
+  <a href="/report/create">New</a>
 
   <table class="report_list">
   <tr><th>URL</th><th>Date</th></tr>
@@ -31,5 +29,4 @@
   </tr>
   {% endfor %}
   </table>
-</body>
-</html>
+{% endblock %}

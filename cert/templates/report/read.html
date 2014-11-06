@@ -1,5 +1,6 @@
-Hi {{ user.username }}
+{% extends "base.html" %}
 
+{% block content %}
 {% if report %}
   <p>Report id: {{ report.id }}</p>
   <p>Reporter: {{ report.user.first_name }}</p>
@@ -20,4 +21,4 @@ Hi {{ user.username }}
 {% if report %}
   <p><a href="/report/edit/{{ report.id }}/">edit</a></p>
 {% endif %}
-
+{% endblock %}
