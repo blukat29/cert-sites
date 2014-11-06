@@ -8,5 +8,5 @@ class Report(models.Model):
     url = models.CharField(max_length=300)
     text = models.CharField(max_length=10000)
     date = models.DateField()
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True) # Make it not required field.
     # TODO images
