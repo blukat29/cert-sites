@@ -28,15 +28,30 @@ class ReportCreateView(CreateView):
 
     def form_valid(self, form):
         report = form.save(commit=False)
+
+        # Automatically set the author of this report to the
+        # current logged in user.
         report.user = User.objects.get(username=self.request.user.username)
         report.save()
+
+        # This saves the tags
         form.save_m2m()
         return redirect("/report/")
 
     def get_context_data(self, **kwargs):
         context = super(ReportCreateView, self).get_context_data(**kwargs)
+
+        # "user" is for displaying currend logged in user on
+        # the top of the page. This is assumed in all pages.
         context["user"] = self.request.user
+
+        # "reporter" is for displaying the author of a report.
+        # reporter's info is filled on the report form.
         context["reporter"] = self.request.user
+
+        # True means template is safe to display report form.
+        # So though there is no report object, we still pass
+        # this context variable.
         context["valid_report"] = True
         return context
 
@@ -54,8 +69,12 @@ class ReportUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(ReportUpdateView, self).get_context_data(**kwargs)
+
+        # "user" is the current logged in user.
         context["user"] = self.request.user
+
         if self.object:
+            # "reporter" is the user who submitted this report.
             context["reporter"] = self.object.user
             context["valid_report"] = True
         else:
