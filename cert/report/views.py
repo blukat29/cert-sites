@@ -9,6 +9,8 @@ from report.forms import ReportForm
 @login_required
 def index(request):
     reports = Report.objects.all()
+    for report in reports:
+        report.tags_names = report.tags.names()
     return render(request, "report/index.html", {"reports":reports})
 
 @login_required
