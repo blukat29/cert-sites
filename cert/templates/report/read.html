@@ -10,9 +10,31 @@
   <p>Date: {{ report.date }}</p>
   <p>{{ report.text }}</p>
   <p>Tags:
-  {% for tag in report.tags_names %}
-  <span>{{ tag }}</span>
-  {% endfor %}
+    {% for tag in report.tags_names %}
+    <span>{{ tag }}</span>
+    {% endfor %}
+  </p>
+  <p>Image:
+    {% if report.image1 %}
+    <img class="img_preview_big" src="{{ report.image1.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
+    {% if report.image2 %}
+    <img class="img_preview_big" src="{{ report.image2.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
+    {% if report.image3 %}
+    <img class="img_preview_big" src="{{ report.image3.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
+    {% if report.image4 %}
+    <img class="img_preview_big" src="{{ report.image4.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
   </p>
 {% else %}
   <p>No such report.</p>
