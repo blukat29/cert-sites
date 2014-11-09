@@ -8,25 +8,30 @@
     <p>Phone: {{ reporter.last_name }}</p>
     <p>Email: {{ reporter.email }}</p>
     {{ form.as_p }}
-    <p><img id="img_preview" class="img_preview_small" src="#" alt="your image"/></p>
+    <p>
+      <img id="img_preview1" class="img_preview_small" src="#" alt="your image"/>
+      <img id="img_preview2" class="img_preview_small" src="#" alt="your image"/>
+      <img id="img_preview3" class="img_preview_small" src="#" alt="your image"/>
+      <img id="img_preview4" class="img_preview_small" src="#" alt="your image"/>
+    </p>
     <input type="submit" value="Submit" />
   </form>
 {% else %}
   <p>No such report!</p>
 {% endif %}
 <script>
-function showPreview(input) {
+function showPreview(input, idx) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function(e) {
-      $("#img_preview").attr("src", e.target.result);
+      $("#img_preview"+idx).attr("src", e.target.result);
     }
-    console.log(input.files);
     reader.readAsDataURL(input.files[0]);
   }
 }
-$("#id_image").change(function() {
-  showPreview(this);
-});
+$("#id_image1").change(function(){ showPreview(this, 1); });
+$("#id_image2").change(function(){ showPreview(this, 2); });
+$("#id_image3").change(function(){ showPreview(this, 3); });
+$("#id_image4").change(function(){ showPreview(this, 4); });
 </script>
 {% endblock %}

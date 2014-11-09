@@ -15,8 +15,23 @@
     {% endfor %}
   </p>
   <p>Image:
-    {% if report.image %}
-    <img class="img_preview_big" src="{{ report.image.url }}" alt="Loading image..">
+    {% if report.image1 %}
+    <img class="img_preview_big" src="{{ report.image1.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
+    {% if report.image2 %}
+    <img class="img_preview_big" src="{{ report.image2.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
+    {% if report.image3 %}
+    <img class="img_preview_big" src="{{ report.image3.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
+    {% if report.image4 %}
+    <img class="img_preview_big" src="{{ report.image4.url }}" alt="Loading image..">
     {% else %}
     No image.
     {% endif %}

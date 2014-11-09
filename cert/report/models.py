@@ -9,4 +9,7 @@ class Report(models.Model):
     text = models.CharField(max_length=10000)
     date = models.DateField()
     tags = TaggableManager(blank=True) # Make it not required field.
-    image = models.FileField(upload_to='images/%Y/%m', blank=True)
+    image1 = models.FileField(upload_to='images/%Y/%m', blank=True, default="")
+    image2 = models.FileField(upload_to='images/%Y/%m', blank=True, default="")
+    image3 = models.FileField(upload_to='images/%Y/%m', blank=True, default="")
+    image4 = models.FileField(upload_to='images/%Y/%m', blank=True, default="")
