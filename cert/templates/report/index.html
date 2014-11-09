@@ -25,6 +25,9 @@
   <tr>
     <td>{{ report.url }}&nbsp;<a href="/report/read/{{ report.id }}/">Read</a></td>
     <td>{{ report.date }}</td>
+    {% for tag in report.tags_names %}
+      <td>{{ tag }}</td>
+    {% endfor %}
   </tr>
   {% endfor %}
   </table>
