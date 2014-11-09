@@ -8,9 +8,25 @@
     <p>Phone: {{ reporter.last_name }}</p>
     <p>Email: {{ reporter.email }}</p>
     {{ form.as_p }}
+    <img id="img_preview" src="#" alt="your image"/>
     <input type="submit" value="Submit" />
   </form>
 {% else %}
   <p>No such report!</p>
 {% endif %}
+<script>
+function showPreview(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $("#img_preview").attr("src", e.target.result);
+    }
+    console.log(input.files);
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+$("#id_image").change(function() {
+  showPreview(this);
+});
+</script>
 {% endblock %}
