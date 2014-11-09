@@ -10,6 +10,7 @@ from report.models import Report
 class ReportForm(ModelForm):
     text = forms.CharField(widget=forms.Textarea)
     date = forms.DateField(initial=datetime.now)
+    image = forms.FileField(required=False)
     class Meta:
         model = Report
-        fields = ["url", "text", "date", "tags"]
+        fields = ["url", "text", "date", "tags", "image"]

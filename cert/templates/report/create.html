@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if valid_report %}
-  <form action="" method="post">
+  <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>Reporter: {{ reporter.first_name }}</p>
     <p>Phone: {{ reporter.last_name }}</p>

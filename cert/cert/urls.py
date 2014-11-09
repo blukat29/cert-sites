@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
+from django.conf.urls.static import static
 
 from forms import RegistrationForm
 
@@ -19,3 +20,7 @@ urlpatterns = patterns('',
                                           form_class=RegistrationForm,
                                           success_url="/")),
 )
+
+import settings
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

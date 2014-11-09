@@ -10,9 +10,16 @@
   <p>Date: {{ report.date }}</p>
   <p>{{ report.text }}</p>
   <p>Tags:
-  {% for tag in report.tags_names %}
-  <span>{{ tag }}</span>
-  {% endfor %}
+    {% for tag in report.tags_names %}
+    <span>{{ tag }}</span>
+    {% endfor %}
+  </p>
+  <p>Image:
+    {% if report.image %}
+    <img src="{{ report.image.url }}" alt="Loading image..">
+    {% else %}
+    No image.
+    {% endif %}
   </p>
 {% else %}
   <p>No such report.</p>
